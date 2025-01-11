@@ -3,59 +3,72 @@ import styled from 'styled-components'
 import { useLanguage } from '../context/LanguageContext'
 
 const ContactContainer = styled.div`
-  padding-top: 80px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-`
+  padding: 6rem 2rem 2rem;
+  background: linear-gradient(to bottom, #f5f5f5, #fff);
+
+  @media (max-width: 768px) {
+    padding: 5rem 1rem 1rem;
+  }
+`;
 
 const ContactWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-`
+`;
 
 const ContactInfo = styled.div`
-  background: white;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+`;
 
 const ContactTitle = styled.h1`
   font-size: 2.5rem;
-  color: #1a76d2;
-  margin-bottom: 1.5rem;
-`
+  color: #333;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
 
 const ContactDescription = styled.p`
   color: #666;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 2rem;
-`
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+`;
 
 const InfoItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: #f8f9fa;
+  padding: 1.5rem;
+  background: white;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
-  &:hover {
-    transform: translateX(10px);
-    background: #e3f2fd;
+  @media (max-width: 768px) {
+    padding: 1rem;
   }
-`
+`;
 
 const InfoIcon = styled.div`
   width: 40px;
@@ -67,110 +80,159 @@ const InfoIcon = styled.div`
   justify-content: center;
   color: white;
   font-size: 1.2rem;
-`
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+`;
 
 const InfoContent = styled.div`
   flex: 1;
-`
+`;
 
-const InfoLabel = styled.h3`
-  font-size: 1.1rem;
+const InfoTitle = styled.h3`
   color: #333;
-  margin-bottom: 0.25rem;
-`
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const InfoText = styled.p`
   color: #666;
-  font-size: 1rem;
-`
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
 
 const ContactForm = styled.form`
   background: white;
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-`
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
 
 const FormTitle = styled.h2`
-  font-size: 2rem;
-  color: #1a76d2;
+  color: #333;
   margin-bottom: 1.5rem;
-`
+  font-size: 1.8rem;
 
-const InputGroup = styled.div`
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const FormGroup = styled.div`
   margin-bottom: 1.5rem;
-`
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+`;
 
 const Label = styled.label`
   display: block;
   color: #333;
   margin-bottom: 0.5rem;
   font-weight: 500;
-`
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
 
 const Input = styled.input`
   width: 100%;
-  padding: 1rem;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   font-size: 1rem;
-  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #1a76d2;
-    box-shadow: 0 0 0 3px rgba(26, 118, 210, 0.1);
   }
-`
 
-const TextArea = styled.textarea`
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const Textarea = styled.textarea`
   width: 100%;
-  padding: 1rem;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
-  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #1a76d2;
-    box-shadow: 0 0 0 3px rgba(26, 118, 210, 0.1);
   }
-`
+
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    min-height: 120px;
+  }
+`;
 
 const SubmitButton = styled.button`
   background: #1a76d2;
   color: white;
   padding: 1rem 2rem;
   border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
+  border-radius: 5px;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
+  transition: background 0.3s ease;
 
   &:hover {
-    background: #1557a0;
-    transform: translateY(-2px);
+    background: #1565c0;
   }
-`
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+`;
 
 const MapContainer = styled.div`
-  margin-top: 4rem;
-  border-radius: 20px;
+  margin-top: 3rem;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  height: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   iframe {
     width: 100%;
-    height: 100%;
+    height: 400px;
     border: 0;
   }
-`
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+
+    iframe {
+      height: 300px;
+    }
+  }
+`;
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -192,7 +254,7 @@ const Contact: React.FC = () => {
           <InfoItem>
             <InfoIcon>📍</InfoIcon>
             <InfoContent>
-              <InfoLabel>{t('address')}</InfoLabel>
+              <InfoTitle>{t('address')}</InfoTitle>
               <InfoText>Büyükdere cad. Torun Center, Mecidiyeköy/İstanbul</InfoText>
             </InfoContent>
           </InfoItem>
@@ -200,7 +262,7 @@ const Contact: React.FC = () => {
           <InfoItem>
             <InfoIcon>📞</InfoIcon>
             <InfoContent>
-              <InfoLabel>{t('phone')}</InfoLabel>
+              <InfoTitle>{t('phone')}</InfoTitle>
               <InfoText>+90 (535) 680 04 34</InfoText>
             </InfoContent>
           </InfoItem>
@@ -208,7 +270,7 @@ const Contact: React.FC = () => {
           <InfoItem>
             <InfoIcon>📧</InfoIcon>
             <InfoContent>
-              <InfoLabel>{t('email')}</InfoLabel>
+              <InfoTitle>{t('email')}</InfoTitle>
               <InfoText>info@loyaltyhair.com</InfoText>
             </InfoContent>
           </InfoItem>
@@ -216,7 +278,7 @@ const Contact: React.FC = () => {
           <InfoItem>
             <InfoIcon>⏰</InfoIcon>
             <InfoContent>
-              <InfoLabel>{t('working_hours')}</InfoLabel>
+              <InfoTitle>{t('working_hours')}</InfoTitle>
               <InfoText>{t('working_hours_detail')}</InfoText>
             </InfoContent>
           </InfoItem>
@@ -225,25 +287,25 @@ const Contact: React.FC = () => {
         <ContactForm onSubmit={handleSubmit}>
           <FormTitle>{t('contact_form_title')}</FormTitle>
           
-          <InputGroup>
+          <FormGroup>
             <Label>{t('name')}</Label>
             <Input type="text" required />
-          </InputGroup>
+          </FormGroup>
 
-          <InputGroup>
+          <FormGroup>
             <Label>{t('email_address')}</Label>
             <Input type="email" required />
-          </InputGroup>
+          </FormGroup>
 
-          <InputGroup>
+          <FormGroup>
             <Label>{t('phone_number')}</Label>
             <Input type="tel" required />
-          </InputGroup>
+          </FormGroup>
 
-          <InputGroup>
+          <FormGroup>
             <Label>{t('message')}</Label>
-            <TextArea required />
-          </InputGroup>
+            <Textarea required />
+          </FormGroup>
 
           <SubmitButton type="submit">
             {t('send_message')}

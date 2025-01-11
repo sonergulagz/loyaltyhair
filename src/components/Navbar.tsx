@@ -12,7 +12,11 @@ const NavContainer = styled.nav`
   background: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 1rem 2rem;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const NavContent = styled.div`
@@ -31,6 +35,10 @@ const Logo = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const LogoIcon = styled.div`
@@ -40,16 +48,29 @@ const LogoIcon = styled.div`
   align-items: center;
   justify-content: center;
 
-  svg {
-    width: 100%;
-    height: 100%;
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
   }
 `;
 
-const NavLinks = styled.div`
+const NavLinks = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    display: ${props => props.isOpen ? 'flex' : 'none'};
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -60,6 +81,20 @@ const NavLink = styled(Link)`
 
   &:hover {
     color: #1a76d2;
+  }
+`;
+
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1a76d2;
+  padding: 0.5rem;
+
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -80,6 +115,11 @@ const LanguageButton = styled.button`
     background: #1a76d2;
     color: white;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const LanguageDropdown = styled.div<{ isOpen: boolean }>`
@@ -92,6 +132,13 @@ const LanguageDropdown = styled.div<{ isOpen: boolean }>`
   padding: 0.5rem;
   display: ${props => props.isOpen ? 'block' : 'none'};
   margin-top: 0.5rem;
+
+  @media (max-width: 768px) {
+    position: static;
+    width: 100%;
+    margin-top: 0;
+    box-shadow: none;
+  }
 `;
 
 const LanguageOption = styled.button`
@@ -114,6 +161,7 @@ const LanguageOption = styled.button`
 const Navbar: React.FC = () => {
   const { t, currentLanguage, setLanguage } = useLanguage();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const languages: Language[] = [
     { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
@@ -121,6 +169,11 @@ const Navbar: React.FC = () => {
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
     { code: 'ar', name: 'العربية', flag: '🇸🇦' }
   ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setIsLanguageDropdownOpen(false);
+  };
 
   return (
     <NavContainer>
@@ -135,12 +188,15 @@ const Navbar: React.FC = () => {
           </LogoIcon>
           LoyaltyHair
         </Logo>
-        <NavLinks>
-          <NavLink to="/">{t('nav_home')}</NavLink>
-          <NavLink to="/hakkimizda">{t('nav_about')}</NavLink>
-          <NavLink to="/hizmetlerimiz">{t('nav_services')}</NavLink>
-          <NavLink to="/blog">{t('nav_blog')}</NavLink>
-          <NavLink to="/iletisim">{t('nav_contact')}</NavLink>
+        <MenuButton onClick={toggleMenu}>
+          {isMenuOpen ? '✕' : '☰'}
+        </MenuButton>
+        <NavLinks isOpen={isMenuOpen}>
+          <NavLink to="/" onClick={() => setIsMenuOpen(false)}>{t('nav_home')}</NavLink>
+          <NavLink to="/hakkimizda" onClick={() => setIsMenuOpen(false)}>{t('nav_about')}</NavLink>
+          <NavLink to="/hizmetlerimiz" onClick={() => setIsMenuOpen(false)}>{t('nav_services')}</NavLink>
+          <NavLink to="/blog" onClick={() => setIsMenuOpen(false)}>{t('nav_blog')}</NavLink>
+          <NavLink to="/iletisim" onClick={() => setIsMenuOpen(false)}>{t('nav_contact')}</NavLink>
           <LanguageButton onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}>
             {currentLanguage.flag} {currentLanguage.name}
           </LanguageButton>
@@ -151,6 +207,7 @@ const Navbar: React.FC = () => {
                 onClick={() => {
                   setLanguage(language);
                   setIsLanguageDropdownOpen(false);
+                  setIsMenuOpen(false);
                 }}
               >
                 {language.flag} {language.name}
@@ -163,4 +220,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar 
+export default Navbar; 
