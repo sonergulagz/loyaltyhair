@@ -27,28 +27,55 @@ const NavContent = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 `;
 
 const LogoImage = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
 
   @media (max-width: 768px) {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 `;
 
+const LogoTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
 const LogoText = styled(Link)`
-  font-size: 1.5rem;
+  font-family: 'Saira Stencil One', sans-serif;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #333;
+  color: #1a76d2;
   text-decoration: none;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 3px;
+  }
+`;
+
+const ClinicText = styled.span`
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #333;
+  position: absolute;
+  bottom: -10px;
+  right: 2px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    bottom: -12px;
   }
 `;
 
@@ -147,8 +174,11 @@ const Navbar: React.FC = () => {
       <NavContainer>
         <NavContent>
           <Logo>
-            <LogoImage src="/images/logo.png.png" alt="LoyaltyHair Logo" />
-            <LogoText to="/">Loyalty Hair</LogoText>
+            <LogoImage src="/images/logo.png" alt="LoyaltyHair Logo" />
+            <LogoTextContainer>
+              <LogoText to="/">LoyaltyHair</LogoText>
+              <ClinicText>Clinic</ClinicText>
+            </LogoTextContainer>
           </Logo>
           <RightSection>
             <LanguageSwitcher />
