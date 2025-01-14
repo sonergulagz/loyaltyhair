@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const NavContainer = styled.nav`
   background-color: white;
@@ -20,6 +21,7 @@ const NavContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 const Logo = styled.div`
@@ -44,6 +46,10 @@ const LogoText = styled(Link)`
 const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -53,6 +59,10 @@ const NavLink = styled(Link)`
 
   &:hover {
     color: #007bff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
   }
 `;
 
@@ -66,6 +76,7 @@ const Navbar: React.FC = () => {
           <LogoImage src="/images/logo.png.png" alt="LoyaltyHair Logo" />
           <LogoText to="/">Loyalty Hair</LogoText>
         </Logo>
+        <LanguageSwitcher />
         <NavLinks>
           <NavLink to="/">{t('nav_home')}</NavLink>
           <NavLink to="/hizmetler">{t('nav_services')}</NavLink>
