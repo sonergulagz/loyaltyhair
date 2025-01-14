@@ -11,7 +11,6 @@ interface Testimonial {
   id: number;
   content: string;
   author: string;
-  authorImage: string;
   location: string;
 }
 
