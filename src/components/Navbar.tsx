@@ -79,6 +79,7 @@ const Navbar: React.FC = () => {
         <LanguageSwitcher />
         <NavLinks>
           <NavLink to="/">{t('nav_home')}</NavLink>
+          <NavLink to="/hakkimizda">{t('nav_about')}</NavLink>
           <NavLink to="/hizmetler">{t('nav_services')}</NavLink>
           <NavLink to="/blog">{t('nav_blog')}</NavLink>
           <NavLink to="/iletisim">{t('nav_contact')}</NavLink>

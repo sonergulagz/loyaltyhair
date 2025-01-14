@@ -11,6 +11,7 @@ import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import GlobalStyle from './styles/GlobalStyle'
+import ScrollToTop from './components/ScrollToTop'
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -23,6 +24,7 @@ const App: React.FC = () => {
     <LanguageProvider>
       <Router>
         <GlobalStyle />
+        <ScrollToTop />
         <AppContainer>
           <Navbar />
           <Routes>
