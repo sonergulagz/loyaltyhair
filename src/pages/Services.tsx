@@ -158,6 +158,56 @@ const Services: React.FC = () => {
         </ServiceCard>
 
         <ServiceCard>
+          <ServiceImage style={{ backgroundImage: 'url("/images/no-shave.jpg")' }} />
+          <ServiceContent className="content">
+            <ServiceTitle>Tıraşsız Saç Ekimi</ServiceTitle>
+            <ServiceDescription>
+              DHI (Direct Hair Implantation) tekniği ile kanal açma işlemi olmadan, özel Choi kalemleri
+              ile direkt ekim yaparak daha hızlı ve konforlu bir deneyim sunuyoruz.
+            </ServiceDescription>
+            <ServiceFeatures>
+              <li>Kanal açma işlemi yok</li>
+              <li>Daha hızlı iyileşme</li>
+              <li>Minimum travma</li>
+              <li>Maksimum yoğunluk</li>
+            </ServiceFeatures>
+            <CTAButton to="/iletisim">Randevu Al</CTAButton>
+          </ServiceContent>
+        </ServiceCard>
+
+        <ServiceCard>
+          <ServiceImage style={{ backgroundImage: 'url("/images/beard_transplant.png")' }} />
+          <ServiceContent className="content">
+            <ServiceTitle>Sakal Ekimi</ServiceTitle>
+            <ServiceDescription>
+            Sakal ekimi süreci, hastanın ihtiyaçlarının ve beklentilerinin detaylı bir şekilde değerlendirilmesiyle başlar. Ekim yapılacak alanın yoğunluğu, sakalın şekli ve yönü gibi faktörler doktor tarafından incelenir. Ayrıca, donör alan (genellikle başın arkası) değerlendirilir.
+            </ServiceDescription>
+            <ServiceFeatures>
+              <li>Kanal açma işlemi yok</li>
+              <li>Daha hızlı iyileşme</li>
+              <li>Minimum travma</li>
+              <li>Maksimum yoğunluk</li>
+            </ServiceFeatures>
+            <CTAButton to="/iletisim">Randevu Al</CTAButton>
+          </ServiceContent>
+        </ServiceCard>
+
+        <ServiceCard>
+          <ServiceImage style={{ backgroundImage: 'url("/images/eyebrow_transplant.jpg")' }} />
+          <ServiceContent className="content">
+            <ServiceTitle>Kaş Ekimi</ServiceTitle>
+            <ServiceDescription>
+            Kaş ekimi, seyrek veya kaybolmuş kaşları doldurmak için yapılan bir cerrahi işlemdir. Bu işlemde, saç ekimi tekniği kullanılarak, donör bölgeden alınan saç kökleri, kaş bölgesine nakledilir ve daha dolgun ve estetik bir görünüm elde edilmesi sağlanır.            </ServiceDescription>
+            <ServiceFeatures>
+              <li>Kalıcı sonuçlar</li>
+              <li>Daha hızlı iyileşme</li>
+              <li>Minimum travma</li>
+              <li>Maksimum yoğunluk</li>
+            </ServiceFeatures>
+            <CTAButton to="/iletisim">Randevu Al</CTAButton>
+          </ServiceContent>
+        </ServiceCard>
+        <ServiceCard>
           <ServiceImage style={{ backgroundImage: 'url("/images/prp-treatment.jpg")' }} />
           <ServiceContent className="content">
             <ServiceTitle>PRP Tedavisi</ServiceTitle>
@@ -174,6 +224,8 @@ const Services: React.FC = () => {
             <CTAButton to="/iletisim">Randevu Al</CTAButton>
           </ServiceContent>
         </ServiceCard>
+      
+        
       </ServicesContent>
     </ServicesContainer>
   )

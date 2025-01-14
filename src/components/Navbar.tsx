@@ -68,7 +68,7 @@ const ClinicText = styled.span`
   font-size: 0.75rem;
   color: #333;
   position: absolute;
-  bottom: -10px;
+  bottom: -9px;
   right: 2px;
   font-weight: 500;
   letter-spacing: 0.5px;

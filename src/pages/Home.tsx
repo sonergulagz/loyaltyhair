@@ -16,7 +16,6 @@ interface Testimonial {
 }
 
 interface Service {
-  id: number;
   title: string;
   description: string;
   image: string;
@@ -30,82 +29,6 @@ interface BlogPost {
   image: string;
   slug: string;
 }
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    content: "Saç ekimi deneyimim mükemmeldi. Ekip çok profesyoneldi ve sonuçlardan çok memnunum. Özellikle doktorumuzun ilgisi ve bilgilendirmesi çok iyiydi.",
-    author: "Ahmet Y.",
-    location: "İstanbul"
-  },
-  {
-    id: 2,
-    content: "6 ay önce yaptırdığım saç ekimi operasyonundan çok memnunum. Doğal ve sık bir görünüm elde ettim. Tüm ekibe teşekkürler!",
-    author: "Mehmet K.",
-    location: "Ankara"
-  },
-  {
-    id: 3,
-    content: "DHI tekniği ile yapılan saç ekimim çok başarılı geçti. İyileşme süreci hızlı ve konforluydu. Sonuçlar beklediğimden çok daha iyi.",
-    author: "Burak S.",
-    location: "İzmir"
-  }
-];
-
-const services: Service[] = [
-  {
-    id: 1,
-    title: 'Saç Ekimi',
-    description: 'En son teknoloji ve uzman kadromuzla doğal görünümlü saç ekimi.',
-    image: '/images/hair-transplant.jpg',
-    link: '/blog/sac-ekimi-nasil-yapilir'
-  },
-  {
-    id: 2,
-    title: 'DHI Tekniği',
-    description: 'Kalem tekniği ile yapılan hassas ve doğal saç ekimi yöntemi.',
-    image: '/images/dhi-technique.jpg',
-    link: '/blog/dhi-teknigi-nedir'
-  },
-  {
-    id: 3,
-    title: 'PRP Tedavisi',
-    description: 'Saç köklerini güçlendiren ve büyümeyi hızlandıran tedavi.',
-    image: '/images/prp-treatment.jpg',
-    link: '/blog/prp-tedavisi-ve-faydalari'
-  },
-  {
-    id: 4,
-    title: 'Tıraşsız Saç Ekimi',
-    description: 'Saçlarınızı kestirmeden doğal görünümlü saç ekimi.',
-    image: '/images/no-shave.jpg',
-    link: '/blog/tirassiz-sac-ekimi'
-  }
-];
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: 'Saç Ekimi Hakkında Bilmeniz Gerekenler',
-    excerpt: 'Saç ekimi öncesi ve sonrası süreç hakkında detaylı bilgiler.',
-    image: '/images/hair-transplant.jpg',
-    slug: 'sac-ekimi-bilgilendirme'
-  },
-  {
-    id: 2,
-    title: 'DHI ve FUE Teknikleri Arasındaki Farklar',
-    excerpt: 'İki popüler saç ekimi tekniğinin karşılaştırmalı analizi.',
-    image: '/images/dhi-technique.jpg',
-    slug: 'dhi-fue-karsilastirma'
-  },
-  {
-    id: 3,
-    title: 'Saç Ekimi Sonrası Bakım',
-    excerpt: 'En iyi sonuçlar için saç ekimi sonrası bakım önerileri.',
-    image: '/images/post-care.jpg',
-    slug: 'sac-ekimi-sonrasi-bakim'
-  }
-];
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -223,10 +146,7 @@ const ServiceImage = styled.div`
   height: 200px;
   background-size: cover;
   background-position: center;
-
-  @media (max-width: 768px) {
-    height: 180px;
-  }
+  margin-bottom: 1rem;
 `;
 
 const ServiceContent = styled.div`
@@ -331,45 +251,6 @@ const AuthorLocation = styled.p`
   }
 `;
 
-const simpleTestimonials = [
-  {
-    id: 4,
-    content: 'Ekibin profesyonelligi ve islemin her asamasindaki detayli bilgilendirme sayesinde cok rahat bir deneyim yasadim.',
-    author: 'Ahmet K.',
-    location: 'Bursa'
-  },
-  {
-    id: 5,
-    content: 'Sonuclar bekledigimden cok daha iyi. Artik kendime guvenle bakabiliyorum.',
-    author: 'Murat S.',
-    location: 'Antalya'
-  },
-  {
-    id: 6,
-    content: 'Fiyat/performans acisindan kesinlikle en iyi tercih. Tesekkurler LoyaltyHair!',
-    author: 'Kemal D.',
-    location: 'Eskisehir'
-  }
-]
-
-const AboutSection = styled.section`
-  padding: 6rem 2rem;
-  background: #f8f9fa;
-`;
-
-const AboutContent = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const AboutText = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #555;
-  margin-bottom: 2rem;
-`;
-
 const BlogSection = styled.section`
   padding: 6rem 2rem;
   background: white;
@@ -418,41 +299,6 @@ const BlogExcerpt = styled.p`
   line-height: 1.6;
 `;
 
-const ContactSection = styled.section`
-  padding: 6rem 2rem;
-  background: #f8f9fa;
-`;
-
-const ContactContent = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const ContactInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2rem;
-`;
-
-const ContactInfoItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-`;
-
-const ContactIcon = styled.span`
-  font-size: 1.5rem;
-`;
-
-const ContactText = styled.p`
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.6;
-`;
-
 const Home: React.FC = () => {
   const { t } = useLanguage();
   
@@ -465,6 +311,90 @@ const Home: React.FC = () => {
     autoplay: true,
     autoplaySpeed: 5000
   }
+
+  const testimonials: Testimonial[] = [
+    {
+      id: 1,
+      content: "Saç ekimi deneyimim mükemmeldi. Ekip çok profesyoneldi ve sonuçlardan çok memnunum. Özellikle doktorumuzun ilgisi ve bilgilendirmesi çok iyiydi.",
+      author: "Ahmet Y.",
+      location: "İstanbul"
+    },
+    {
+      id: 2,
+      content: "6 ay önce yaptırdığım saç ekimi operasyonundan çok memnunum. Doğal ve sık bir görünüm elde ettim. Tüm ekibe teşekkürler!",
+      author: "Mehmet K.",
+      location: "Ankara"
+    },
+    {
+      id: 3,
+      content: "DHI tekniği ile yapılan saç ekimim çok başarılı geçti. İyileşme süreci hızlı ve konforluydu. Sonuçlar beklediğimden çok daha iyi.",
+      author: "Burak S.",
+      location: "İzmir"
+    }
+  ];
+
+  const services: Service[] = [
+    {
+      title: t('dhi_technique'),
+      description: t('dhi_desc'),
+      image: '/images/dhi-hair.jpg',
+      link: '/hizmetler'
+    },
+    {
+      title: t('fue_technique'),
+      description: t('fue_desc'),
+      image: '/images/fue-hair.jpg',
+      link: '/hizmetler'
+    },
+    {
+      title: t('no_shave'),
+      description: t('no_shave_desc'),
+      image: '/images/no-shave.jpg',
+      link: '/hizmetler'
+    },
+    {
+      title: t('beard_transplant'),
+      description: t('beard_transplant_desc'),
+      image: '/images/beard_transplant.png',
+      link: '/hizmetler'
+    },
+    {
+      title: t('eyebrow_transplant'),
+      description: t('eyebrow_transplant_desc'),
+      image: '/images/eyebrow_transplant.jpg',
+      link: '/hizmetler'
+    },
+    {
+      title: t('prp_treatment'),
+      description: t('prp_desc'),
+      image: '/images/prp-treatment.jpg',
+      link: '/hizmetler'
+    }
+  ];
+
+  const blogPosts: BlogPost[] = [
+    {
+      id: 1,
+      title: 'Saç Ekimi Hakkında Bilmeniz Gerekenler',
+      excerpt: 'Saç ekimi operasyonu öncesinde bilmeniz gereken önemli noktalar...',
+      image: '/images/hair-transplant.jpg',
+      slug: 'sac-ekimi-nasil-yapilir'
+    },
+    {
+      id: 2,
+      title: 'DHI ve FUE Teknikleri Arasındaki Farklar',
+      excerpt: 'İki popüler saç ekimi tekniğinin karşılaştırmalı analizi...',
+      image: '/images/dhi-technique.jpg',
+      slug: 'dhi-teknigi-nedir'
+    },
+    {
+      id: 3,
+      title: 'Saç Ekimi Sonrası Bakım',
+      excerpt: 'Operasyon sonrası iyileşme sürecini hızlandırmak için öneriler...',
+      image: '/images/post-care.jpg',
+      slug: 'sac-ekimi-sonrasi-bakim'
+    }
+  ];
 
   return (
     <>
@@ -486,7 +416,7 @@ const Home: React.FC = () => {
           <SectionTitle>{t('nav_services')}</SectionTitle>
           <ServicesGrid>
             {services.map((service, index) => (
-              <ScrollAnimation key={service.id} className={`delay-${index + 1}`}>
+              <ScrollAnimation key={index} className={`delay-${index + 1}`}>
                 <ServiceCard>
                   <ServiceImage style={{ backgroundImage: `url("${service.image}")` }} />
                   <ServiceContent>

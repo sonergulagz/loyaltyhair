@@ -15,6 +15,12 @@ export type TranslationKey =
   | 'prp_desc'
   | 'no_shave'
   | 'no_shave_desc'
+  | 'beard_transplant'
+  | 'beard_transplant_desc'
+  | 'eyebrow_transplant'
+  | 'eyebrow_transplant_desc'
+  | 'stem_cell'
+  | 'stem_cell_desc'
   | 'fue_technique'
   | 'fue_desc'
   | 'aftercare'
@@ -64,6 +70,12 @@ const translations = {
     prp_desc: 'Kendi kanınızdan elde edilen plazma ile saç köklerinizi güçlendiriyoruz.',
     no_shave: 'Tıraşsız Saç Ekimi',
     no_shave_desc: 'Sosyal hayatınızı kesintiye uğratmadan saç ekimi yaptırabilirsiniz.',
+    beard_transplant: 'Sakal Ekimi',
+    beard_transplant_desc: 'Doğal ve sık görünümlü sakal için uzman ekibimizle kişiye özel sakal ekimi operasyonları.',
+    eyebrow_transplant: 'Kaş Ekimi',
+    eyebrow_transplant_desc: 'Kaş şeklinizi ve yoğunluğunu iyileştirmek için hassas ve doğal görünümlü kaş ekimi.',
+    stem_cell: 'Kök Hücre Tedavisi',
+    stem_cell_desc: 'Saç köklerini canlandırmak ve güçlendirmek için yenilikçi kök hücre tedavisi.',
     fue_technique: 'FUE Tekniği',
     fue_desc: 'Minimal invaziv yöntemle doğal ve kalıcı sonuçlar elde edin.',
     aftercare: 'Sonrası Bakım',
@@ -103,6 +115,12 @@ const translations = {
     prp_desc: 'We strengthen your hair follicles with plasma obtained from your own blood.',
     no_shave: 'No-Shave Hair Transplant',
     no_shave_desc: 'You can have hair transplantation without interrupting your social life.',
+    beard_transplant: 'Beard Transplant',
+    beard_transplant_desc: 'Personalized beard transplant operations with our expert team for a natural and dense appearance.',
+    eyebrow_transplant: 'Eyebrow Transplant',
+    eyebrow_transplant_desc: 'Precise and natural-looking eyebrow transplantation to improve your eyebrow shape and density.',
+    stem_cell: 'Stem Cell Treatment',
+    stem_cell_desc: 'Innovative stem cell treatment to revitalize and strengthen hair follicles.',
     fue_technique: 'FUE Technique',
     fue_desc: 'Achieve natural and permanent results with minimal invasive method.',
     aftercare: 'Aftercare',
@@ -142,6 +160,12 @@ const translations = {
     prp_desc: 'Wir stärken Ihre Haarfollikel mit Plasma aus Ihrem eigenen Blut.',
     no_shave: 'No-Shave Haartransplantation',
     no_shave_desc: 'Sie können sich einer Haartransplantation unterziehen, ohne Ihr soziales Leben zu unterbrechen.',
+    beard_transplant: 'Sakal Ekimi',
+    beard_transplant_desc: 'Doğal ve sık görünümlü sakal için uzman ekibimizle kişiye özel sakal ekimi operasyonları.',
+    eyebrow_transplant: 'Kaş Ekimi',
+    eyebrow_transplant_desc: 'Kaş şeklinizi ve yoğunluğunu iyileştirmek için hassas ve doğal görünümlü kaş ekimi.',
+    stem_cell: 'Kök Hücre Tedavisi',
+    stem_cell_desc: 'Saç köklerini canlandırmak ve güçlendirmek için yenilikçi kök hücre tedavisi.',
     fue_technique: 'FUE-Technik',
     fue_desc: 'Erzielen Sie natürliche und dauerhafte Ergebnisse mit minimal-invasiver Methode.',
     aftercare: 'Nachsorge',
@@ -181,6 +205,12 @@ const translations = {
     prp_desc: 'نقوي بصيلات الشعر لديك بالبلازما المستخرجة من دمك.',
     no_shave: 'زراعة الشعر بدون حلاقة',
     no_shave_desc: 'يمكنك إجراء زراعة الشعر دون مقاطعة حياتك الاجتماعية.',
+    beard_transplant: 'سكير الشعر',
+    beard_transplant_desc: 'تقنية سكير الشعر المخصصة للسكير الطبيعي والكثيف مع فريق الخبراء المخصص لكل شخص.',
+    eyebrow_transplant: 'تقنية الشعر المؤثر',
+    eyebrow_transplant_desc: 'تقنية إزالة الشعر المؤثرة لتحسين شكل وكثافة الشعر المؤثر.',
+    stem_cell: 'علاج الخلايا الأساسية',
+    stem_cell_desc: 'علاج الخلايا الأساسية المبتكر لتحفيز وتثبيط الشعر المؤثر.',
     fue_technique: 'تقنية FUE',
     fue_desc: 'احصل على نتائج طبيعية ودائمة مع طريقة الحد الأدنى من التدخل الجراحي.',
     aftercare: 'العناية بعد العملية',

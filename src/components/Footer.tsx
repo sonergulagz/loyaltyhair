@@ -110,11 +110,14 @@ const Footer: React.FC = () => {
 
         <FooterSection>
           <FooterTitle>Hizmetlerimiz</FooterTitle>
-          <FooterLink to="/hizmetler">Saç Ekimi</FooterLink>
+        
           <FooterLink to="/hizmetler">DHI Tekniği</FooterLink>
           <FooterLink to="/hizmetler">FUE Tekniği</FooterLink>
-          <FooterLink to="/hizmetler">PRP Tedavisi</FooterLink>
           <FooterLink to="/hizmetler">Tıraşsız Saç Ekimi</FooterLink>
+          <FooterLink to="/hizmetler">Sakal Ekimi</FooterLink>
+          <FooterLink to="/hizmetler">Kaş Ekimi</FooterLink>
+          <FooterLink to="/hizmetler">PRP Tedavisi</FooterLink>
+          
         </FooterSection>
 
         <FooterSection>
