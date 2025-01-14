@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../context/LanguageContext'
+import ScrollAnimation from '../components/ScrollAnimation'
 
 interface Testimonial {
   id: number;
@@ -297,17 +298,21 @@ const Home: React.FC = () => {
     <>
       <LanguageSwitcher />
       <HeroSection>
-        <HeroContent>
-          <HeroTitle>{t('hero_title')}</HeroTitle>
-          <HeroDescription>
-            {t('hero_description')}
-          </HeroDescription>
-          <CTAButton to="/iletisim">{t('free_consultation')}</CTAButton>
-        </HeroContent>
+        <ScrollAnimation>
+          <HeroContent>
+            <HeroTitle>{t('hero_title')}</HeroTitle>
+            <HeroDescription>
+              {t('hero_description')}
+            </HeroDescription>
+            <CTAButton to="/iletisim">{t('free_consultation')}</CTAButton>
+          </HeroContent>
+        </ScrollAnimation>
       </HeroSection>
 
       <ServicesSection>
-        <SectionTitle>{t('nav_services')}</SectionTitle>
+        <ScrollAnimation>
+          <SectionTitle>{t('nav_services')}</SectionTitle>
+        </ScrollAnimation>
         <ServicesGrid>
           <ServiceCard>
             <ServiceImage style={{ backgroundImage: 'url("/images/hair-transplant.jpg")' }} />
@@ -378,16 +383,20 @@ const Home: React.FC = () => {
       </ServicesSection>
 
       <TestimonialsSection>
-        <SectionTitle>{t('testimonials_title')}</SectionTitle>
+        <ScrollAnimation>
+          <SectionTitle>{t('testimonials_title')}</SectionTitle>
+        </ScrollAnimation>
         <TestimonialsGrid>
-          {testimonials.map(testimonial => (
-            <TestimonialCard key={testimonial.id}>
-              <TestimonialContent>{testimonial.content}</TestimonialContent>
-              <TestimonialAuthor>
-                <AuthorName>{testimonial.author}</AuthorName>
-                <AuthorLocation>{testimonial.location}</AuthorLocation>
-              </TestimonialAuthor>
-            </TestimonialCard>
+          {testimonials.map((testimonial, index) => (
+            <ScrollAnimation key={testimonial.id} className={`delay-${index + 1}`}>
+              <TestimonialCard>
+                <TestimonialContent>{testimonial.content}</TestimonialContent>
+                <TestimonialAuthor>
+                  <AuthorName>{testimonial.author}</AuthorName>
+                  <AuthorLocation>{testimonial.location}</AuthorLocation>
+                </TestimonialAuthor>
+              </TestimonialCard>
+            </ScrollAnimation>
           ))}
         </TestimonialsGrid>
       </TestimonialsSection>

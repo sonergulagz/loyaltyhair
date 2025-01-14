@@ -12,6 +12,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import GlobalStyle from './styles/GlobalStyle'
 import ScrollToTop from './components/ScrollToTop'
+import WhatsAppButton from './components/WhatsAppButton'
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -36,6 +37,7 @@ const App: React.FC = () => {
             <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
           <Footer />
+          <WhatsAppButton />
         </AppContainer>
       </Router>
     </LanguageProvider>
