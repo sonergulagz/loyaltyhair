@@ -18,24 +18,21 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    content: "Saç ekimi deneyimim mükemmeldi. Ekip çok profesyoneldi ve sonuçlardan çok memnunum.",
-    author: "Ahmet Yılmaz",
-    authorImage: "/images/testimonial1.jpg",
-    location: "İstanbul, Türkiye"
+    content: "Saç ekimi deneyimim mükemmeldi. Ekip çok profesyoneldi ve sonuçlardan çok memnunum. Özellikle doktorumuzun ilgisi ve bilgilendirmesi çok iyiydi.",
+    author: "Ahmet Y.",
+    location: "İstanbul"
   },
   {
     id: 2,
-    content: "The hair transplant experience was amazing. Very professional team and I'm very happy with the results.",
-    author: "John Smith",
-    authorImage: "/images/testimonial2.jpg",
-    location: "London, UK"
+    content: "6 ay önce yaptırdığım saç ekimi operasyonundan çok memnunum. Doğal ve sık bir görünüm elde ettim. Tüm ekibe teşekkürler!",
+    author: "Mehmet K.",
+    location: "Ankara"
   },
   {
     id: 3,
-    content: "Die Haartransplantation war eine tolle Erfahrung. Sehr professionelles Team und ich bin mit den Ergebnissen sehr zufrieden.",
-    author: "Hans Mueller",
-    authorImage: "/images/testimonial3.jpg",
-    location: "Berlin, Germany"
+    content: "DHI tekniği ile yapılan saç ekimim çok başarılı geçti. İyileşme süreci hızlı ve konforluydu. Sonuçlar beklediğimden çok daha iyi.",
+    author: "Burak S.",
+    location: "İzmir"
   }
 ];
 
@@ -218,6 +215,9 @@ const TestimonialCard = styled.div`
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (max-width: 768px) {
     padding: 1.5rem;
@@ -238,27 +238,13 @@ const TestimonialContent = styled.p`
 
 const TestimonialAuthor = styled.div`
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
 `;
-
-const AuthorImage = styled.img`
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-  }
-`;
-
-const AuthorInfo = styled.div``;
 
 const AuthorName = styled.h4`
   color: #333;
   margin-bottom: 0.25rem;
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -393,16 +379,14 @@ const Home: React.FC = () => {
       </ServicesSection>
 
       <TestimonialsSection>
+        <SectionTitle>{t('testimonials_title')}</SectionTitle>
         <TestimonialsGrid>
           {testimonials.map(testimonial => (
             <TestimonialCard key={testimonial.id}>
               <TestimonialContent>{testimonial.content}</TestimonialContent>
               <TestimonialAuthor>
-                <AuthorImage src={testimonial.authorImage} alt={testimonial.author} />
-                <AuthorInfo>
-                  <AuthorName>{testimonial.author}</AuthorName>
-                  <AuthorLocation>{testimonial.location}</AuthorLocation>
-                </AuthorInfo>
+                <AuthorName>{testimonial.author}</AuthorName>
+                <AuthorLocation>{testimonial.location}</AuthorLocation>
               </TestimonialAuthor>
             </TestimonialCard>
           ))}

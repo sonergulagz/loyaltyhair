@@ -4,39 +4,37 @@ import { useLanguage } from '../context/LanguageContext';
 import type { Language } from '../types/language';
 
 const LanguageContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 2rem;
+  position: relative;
 
   @media (max-width: 768px) {
-    margin-top: 0.8rem;
+    margin-right: 1rem;
   }
 `
 
 const LanguageButton = styled.button`
-  background: rgba(26, 118, 210, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  color: white;
+  background: transparent;
+  border: 1px solid #1a76d2;
+  padding: 6px 12px;
+  color: #1a76d2;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
+  border-radius: 4px;
   transition: all 0.3s ease;
   font-size: 14px;
 
   &:hover {
-    background: rgba(26, 118, 210, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #1a76d2;
+    color: white;
   }
 
   @media (max-width: 768px) {
-    padding: 6px 12px;
+    padding: 4px 8px;
     font-size: 12px;
   }
 `
@@ -44,26 +42,21 @@ const LanguageButton = styled.button`
 const LanguageDropdown = styled.div<{ isOpen: boolean }>`
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 8px;
+  right: 0;
+  margin-top: 4px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: ${props => props.isOpen ? 'block' : 'none'};
   overflow: hidden;
-  min-width: 150px;
+  min-width: 120px;
   z-index: 1001;
-
-  @media (max-width: 768px) {
-    min-width: 120px;
-  }
 `
 
 const LanguageOption = styled.button`
   display: flex;
   width: 100%;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border: none;
   background: none;
   text-align: left;
@@ -78,7 +71,7 @@ const LanguageOption = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-size: 12px;
   }
 `
