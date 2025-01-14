@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <FooterTitle>LoyaltyHair</FooterTitle>
+          <FooterTitle>LoyaltyHairClinic</FooterTitle>
           <FooterText>
             Saç ekimi konusunda uzman kadromuzla yanınızdayız.
           </FooterText>
@@ -113,11 +113,11 @@ const Footer: React.FC = () => {
 
         <FooterSection>
           <FooterTitle>Hizmetlerimiz</FooterTitle>
-          <FooterLink to="/blog/sac-ekimi-nasil-yapilir">Saç Ekimi</FooterLink>
-          <FooterLink to="/blog/dhi-teknigi-nedir">DHI Tekniği</FooterLink>
-          <FooterLink to="/blog/fue-teknigi-nedir">FUE Tekniği</FooterLink>
-          <FooterLink to="/blog/prp-tedavisi-ve-faydalari">PRP Tedavisi</FooterLink>
-          <FooterLink to="/blog/tirassiz-sac-ekimi">Tıraşsız Saç Ekimi</FooterLink>
+          <FooterLink to="/hizmetler">Saç Ekimi</FooterLink>
+          <FooterLink to="/hizmetler">DHI Tekniği</FooterLink>
+          <FooterLink to="/hizmetler">FUE Tekniği</FooterLink>
+          <FooterLink to="/hizmetler">PRP Tedavisi</FooterLink>
+          <FooterLink to="/hizmetler">Tıraşsız Saç Ekimi</FooterLink>
         </FooterSection>
 
         <FooterSection>
@@ -138,6 +138,8 @@ const Footer: React.FC = () => {
           </FooterText>
           <FooterText>
             Tel: +90 (535) 680 04 34
+            <br />
+            Tel: +90 (534) 232 63 76
             <br />
             E-posta: info@loyaltyhair.com
           </FooterText>
