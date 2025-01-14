@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
@@ -34,6 +34,11 @@ const LogoImage = styled.img`
   width: 40px;
   height: 40px;
   object-fit: contain;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const LogoText = styled(Link)`
@@ -41,14 +46,43 @@ const LogoText = styled(Link)`
   font-weight: bold;
   color: #333;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
-const NavLinks = styled.div`
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  padding: 0.5rem;
+  margin-left: 1rem;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const NavLinks = styled.div<{ isOpen: boolean }>`
   display: flex;
   gap: 2rem;
 
   @media (max-width: 768px) {
-    gap: 1rem;
+    display: ${props => props.isOpen ? 'flex' : 'none'};
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -62,30 +96,76 @@ const NavLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    text-align: center;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+`;
+
+const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Overlay = styled.div<{ isOpen: boolean }>`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: ${props => props.isOpen ? 'block' : 'none'};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
   }
 `;
 
 const Navbar: React.FC = () => {
   const { t } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <NavContainer>
-      <NavContent>
-        <Logo>
-          <LogoImage src="/images/logo.png.png" alt="LoyaltyHair Logo" />
-          <LogoText to="/">Loyalty Hair</LogoText>
-        </Logo>
-        <LanguageSwitcher />
-        <NavLinks>
-          <NavLink to="/">{t('nav_home')}</NavLink>
-          <NavLink to="/hakkimizda">{t('nav_about')}</NavLink>
-          <NavLink to="/hizmetler">{t('nav_services')}</NavLink>
-          <NavLink to="/blog">{t('nav_blog')}</NavLink>
-          <NavLink to="/iletisim">{t('nav_contact')}</NavLink>
-        </NavLinks>
-      </NavContent>
-    </NavContainer>
+    <>
+      <Overlay isOpen={isMenuOpen} onClick={closeMenu} />
+      <NavContainer>
+        <NavContent>
+          <Logo>
+            <LogoImage src="/images/logo.png.png" alt="LoyaltyHair Logo" />
+            <LogoText to="/">Loyalty Hair</LogoText>
+          </Logo>
+          <RightSection>
+            <LanguageSwitcher />
+            <MenuButton onClick={toggleMenu}>
+              {isMenuOpen ? '✕' : '☰'}
+            </MenuButton>
+          </RightSection>
+          <NavLinks isOpen={isMenuOpen}>
+            <NavLink to="/" onClick={closeMenu}>{t('nav_home')}</NavLink>
+            <NavLink to="/hakkimizda" onClick={closeMenu}>{t('nav_about')}</NavLink>
+            <NavLink to="/hizmetler" onClick={closeMenu}>{t('nav_services')}</NavLink>
+            <NavLink to="/blog" onClick={closeMenu}>{t('nav_blog')}</NavLink>
+            <NavLink to="/iletisim" onClick={closeMenu}>{t('nav_contact')}</NavLink>
+          </NavLinks>
+        </NavContent>
+      </NavContainer>
+    </>
   );
 };
 
