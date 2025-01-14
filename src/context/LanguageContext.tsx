@@ -1,7 +1,48 @@
 import React, { createContext, useState, useContext } from 'react';
 import type { Language } from '../types/language';
 
-type TranslationKey = keyof typeof translations.tr;
+export type TranslationKey =
+  | 'address'
+  | 'name'
+  | 'hero_title'
+  | 'hero_description'
+  | 'free_consultation'
+  | 'hair_transplant'
+  | 'hair_transplant_desc'
+  | 'dhi_technique'
+  | 'dhi_desc'
+  | 'prp_treatment'
+  | 'prp_desc'
+  | 'no_shave'
+  | 'no_shave_desc'
+  | 'fue_technique'
+  | 'fue_desc'
+  | 'aftercare'
+  | 'aftercare_desc'
+  | 'nav_home'
+  | 'nav_about'
+  | 'nav_services'
+  | 'nav_blog'
+  | 'nav_contact'
+  | 'testimonials_title'
+  | 'email_address'
+  | 'phone_number'
+  | 'message'
+  | 'send_message'
+  | 'detailed_info'
+  | 'read_more'
+  | 'contact_title'
+  | 'contact_description'
+  | 'contact_form_title'
+  | 'phone'
+  | 'email'
+  | 'working_hours'
+  | 'working_hours_detail'
+  | 'name'
+  | 'email_address'
+  | 'phone_number'
+  | 'message'
+  | 'send_message';
 
 type LanguageContextType = {
   currentLanguage: Language;
@@ -35,19 +76,20 @@ const translations = {
     nav_services: 'Hizmetlerimiz',
     nav_blog: 'Blog',
     nav_contact: 'İletişim',
-    contact_title: 'İletişime Geçin',
-    contact_description: 'Sağlığınıza dair her türlü soru ve ihtiyaç için deneyimli ekibimiz her zaman yanınızda. Geniş kapsamlı hizmet yelpazemizden faydalanmak ve özelleştirilmiş sağlık planlarımız hakkında bilgi almak için bizimle iletişime geçin.',
-    contact_form_title: 'Mesaj Gönderin',
-    address: 'Adres',
+    contact_title: 'Bizimle İletişime Geçin',
+    contact_description: 'Saç ekimi hakkında sorularınız mı var? Size yardımcı olmaktan mutluluk duyarız.',
+    contact_form_title: 'İletişim Formu',
     phone: 'Telefon',
     email: 'E-posta',
+    address: 'Adres',
     working_hours: 'Çalışma Saatleri',
-    working_hours_detail: 'Pazartesi - Cumartesi: 09:00 - 18:00\nPazar: Kapalı',
-    name: 'Ad Soyad',
-    email_address: 'E-posta Adresi',
-    phone_number: 'Telefon Numarası',
+    working_hours_detail: 'Pazartesi - Cumartesi: 09:00 - 18:00',
+    name: 'Adınız',
+    email_address: 'E-posta Adresiniz',
+    phone_number: 'Telefon Numaranız',
     message: 'Mesajınız',
-    send_message: 'Mesajı Gönder'
+    send_message: 'MESAJ GÖNDER',
+    read_more: 'Devamını Oku'
   },
   en: {
     hero_title: 'Your Trusted Partner in Hair Transplantation',
@@ -67,25 +109,26 @@ const translations = {
     aftercare_desc: 'Get information about post-operation care and precautions.',
     testimonials_title: 'Our Reviews',
     testimonials_subtitle: 'We value our customers experiences and their feedback is very important to us.',
-    detailed_info: 'Learn More',
+    detailed_info: 'Detailed Info',
     nav_home: 'Home',
     nav_about: 'About',
     nav_services: 'Services',
     nav_blog: 'Blog',
     nav_contact: 'Contact',
     contact_title: 'Contact Us',
-    contact_description: 'Our experienced team is always by your side for all your health-related questions and needs. Contact us to benefit from our comprehensive service range and learn about our customized healthcare plans.',
-    contact_form_title: 'Send Message',
-    address: 'Address',
+    contact_description: 'Have questions about hair transplantation? We\'d be happy to help.',
+    contact_form_title: 'Contact Form',
     phone: 'Phone',
     email: 'Email',
+    address: 'Address',
     working_hours: 'Working Hours',
-    working_hours_detail: 'Monday - Saturday: 09:00 - 18:00\nSunday: Closed',
-    name: 'Full Name',
-    email_address: 'Email Address',
-    phone_number: 'Phone Number',
+    working_hours_detail: 'Monday - Saturday: 09:00 - 18:00',
+    name: 'Your Name',
+    email_address: 'Your Email',
+    phone_number: 'Your Phone',
     message: 'Your Message',
-    send_message: 'Send Message'
+    send_message: 'SEND MESSAGE',
+    read_more: 'Read More'
   },
   de: {
     hero_title: 'Ihr vertrauenswürdiger Partner bei der Haartransplantation',
@@ -105,7 +148,7 @@ const translations = {
     aftercare_desc: 'Informieren Sie sich über die postoperative Pflege und Vorsichtsmaßnahmen.',
     testimonials_title: 'Unsere Bewertungen',
     testimonials_subtitle: 'Wir schätzen die Erfahrungen unserer Kunden und ihr Feedback ist uns sehr wichtig.',
-    detailed_info: 'Mehr Erfahren',
+    detailed_info: 'Mehr Details',
     nav_home: 'Startseite',
     nav_about: 'Über uns',
     nav_services: 'Leistungen',
@@ -123,7 +166,8 @@ const translations = {
     email_address: 'E-Mail-Adresse',
     phone_number: 'Telefonnummer',
     message: 'Ihre Nachricht',
-    send_message: 'Nachricht senden'
+    send_message: 'Nachricht senden',
+    read_more: 'Weiterlesen'
   },
   ar: {
     hero_title: 'شريكك الموثوق في زراعة الشعر',
@@ -143,7 +187,7 @@ const translations = {
     aftercare_desc: 'احصل على معلومات حول العناية بعد العملية والاحتياطات.',
     testimonials_title: 'آراء عملائنا',
     testimonials_subtitle: 'نحن نقدر تجارب عملائنا وآراؤهم مهمة جداً بالنسبة لنا.',
-    detailed_info: 'اعرف المزيد',
+    detailed_info: 'معلومات مفصلة',
     nav_home: 'الرئيسية',
     nav_about: 'من نحن',
     nav_services: 'خدماتنا',
@@ -161,7 +205,8 @@ const translations = {
     email_address: 'البريد الإلكتروني',
     phone_number: 'رقم الهاتف',
     message: 'رسالتك',
-    send_message: 'إرسال الرسالة'
+    send_message: 'إرسال الرسالة',
+    read_more: 'اقرأ أكثر'
   }
 };
 

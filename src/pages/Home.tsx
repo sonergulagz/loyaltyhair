@@ -15,6 +15,22 @@ interface Testimonial {
   location: string;
 }
 
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  slug: string;
+}
+
 const testimonials: Testimonial[] = [
   {
     id: 1,
@@ -33,6 +49,61 @@ const testimonials: Testimonial[] = [
     content: "DHI tekniği ile yapılan saç ekimim çok başarılı geçti. İyileşme süreci hızlı ve konforluydu. Sonuçlar beklediğimden çok daha iyi.",
     author: "Burak S.",
     location: "İzmir"
+  }
+];
+
+const services: Service[] = [
+  {
+    id: 1,
+    title: 'Saç Ekimi',
+    description: 'En son teknoloji ve uzman kadromuzla doğal görünümlü saç ekimi.',
+    image: '/images/hair-transplant.jpg',
+    link: '/blog/sac-ekimi-nasil-yapilir'
+  },
+  {
+    id: 2,
+    title: 'DHI Tekniği',
+    description: 'Kalem tekniği ile yapılan hassas ve doğal saç ekimi yöntemi.',
+    image: '/images/dhi-technique.jpg',
+    link: '/blog/dhi-teknigi-nedir'
+  },
+  {
+    id: 3,
+    title: 'PRP Tedavisi',
+    description: 'Saç köklerini güçlendiren ve büyümeyi hızlandıran tedavi.',
+    image: '/images/prp-treatment.jpg',
+    link: '/blog/prp-tedavisi-ve-faydalari'
+  },
+  {
+    id: 4,
+    title: 'Tıraşsız Saç Ekimi',
+    description: 'Saçlarınızı kestirmeden doğal görünümlü saç ekimi.',
+    image: '/images/no-shave.jpg',
+    link: '/blog/tirassiz-sac-ekimi'
+  }
+];
+
+const blogPosts: BlogPost[] = [
+  {
+    id: 1,
+    title: 'Saç Ekimi Hakkında Bilmeniz Gerekenler',
+    excerpt: 'Saç ekimi öncesi ve sonrası süreç hakkında detaylı bilgiler.',
+    image: '/images/hair-transplant.jpg',
+    slug: 'sac-ekimi-bilgilendirme'
+  },
+  {
+    id: 2,
+    title: 'DHI ve FUE Teknikleri Arasındaki Farklar',
+    excerpt: 'İki popüler saç ekimi tekniğinin karşılaştırmalı analizi.',
+    image: '/images/dhi-technique.jpg',
+    slug: 'dhi-fue-karsilastirma'
+  },
+  {
+    id: 3,
+    title: 'Saç Ekimi Sonrası Bakım',
+    excerpt: 'En iyi sonuçlar için saç ekimi sonrası bakım önerileri.',
+    image: '/images/post-care.jpg',
+    slug: 'sac-ekimi-sonrasi-bakim'
   }
 ];
 
@@ -281,6 +352,107 @@ const simpleTestimonials = [
   }
 ]
 
+const AboutSection = styled.section`
+  padding: 6rem 2rem;
+  background: #f8f9fa;
+`;
+
+const AboutContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const AboutText = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+`;
+
+const BlogSection = styled.section`
+  padding: 6rem 2rem;
+  background: white;
+`;
+
+const BlogGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+`;
+
+const BlogCard = styled.div`
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const BlogImage = styled.div`
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+`;
+
+const BlogContent = styled.div`
+  padding: 1.5rem;
+`;
+
+const BlogTitle = styled.h3`
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+`;
+
+const BlogExcerpt = styled.p`
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+`;
+
+const ContactSection = styled.section`
+  padding: 6rem 2rem;
+  background: #f8f9fa;
+`;
+
+const ContactContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+`;
+
+const ContactInfoItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+const ContactIcon = styled.span`
+  font-size: 1.5rem;
+`;
+
+const ContactText = styled.p`
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+`;
+
 const Home: React.FC = () => {
   const { t } = useLanguage();
   
@@ -309,97 +481,64 @@ const Home: React.FC = () => {
         </ScrollAnimation>
       </HeroSection>
 
-      <ServicesSection>
-        <ScrollAnimation>
+      <ScrollAnimation className="delay-1">
+        <ServicesSection>
           <SectionTitle>{t('nav_services')}</SectionTitle>
-        </ScrollAnimation>
-        <ServicesGrid>
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/hair-transplant.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('hair_transplant')}</ServiceTitle>
-              <ServiceDescription>
-                {t('hair_transplant_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/sac-ekimi-nasil-yapilir">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
+          <ServicesGrid>
+            {services.map((service, index) => (
+              <ScrollAnimation key={service.id} className={`delay-${index + 1}`}>
+                <ServiceCard>
+                  <ServiceImage style={{ backgroundImage: `url("${service.image}")` }} />
+                  <ServiceContent>
+                    <ServiceTitle>{service.title}</ServiceTitle>
+                    <ServiceDescription>{service.description}</ServiceDescription>
+                    <CTAButton to={service.link}>{t('detailed_info')}</CTAButton>
+                  </ServiceContent>
+                </ServiceCard>
+              </ScrollAnimation>
+            ))}
+          </ServicesGrid>
+        </ServicesSection>
+      </ScrollAnimation>
 
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/dhi-technique.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('dhi_technique')}</ServiceTitle>
-              <ServiceDescription>
-                {t('dhi_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/dhi-teknigi-nedir">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
+      <ScrollAnimation className="delay-2">
+        <BlogSection>
+          <SectionTitle>{t('nav_blog')}</SectionTitle>
+          <BlogGrid>
+            {blogPosts.map((post, index) => (
+              <ScrollAnimation key={post.id} className={`delay-${index + 1}`}>
+                <BlogCard>
+                  <BlogImage style={{ backgroundImage: `url("${post.image}")` }} />
+                  <BlogContent>
+                    <BlogTitle>{post.title}</BlogTitle>
+                    <BlogExcerpt>{post.excerpt}</BlogExcerpt>
+                    <CTAButton to={`/blog/${post.slug}`}>{t('read_more')}</CTAButton>
+                  </BlogContent>
+                </BlogCard>
+              </ScrollAnimation>
+            ))}
+          </BlogGrid>
+        </BlogSection>
+      </ScrollAnimation>
 
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/prp-treatment.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('prp_treatment')}</ServiceTitle>
-              <ServiceDescription>
-                {t('prp_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/prp-tedavisi-ve-faydalari">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
-
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/no-shave.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('no_shave')}</ServiceTitle>
-              <ServiceDescription>
-                {t('no_shave_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/tirassiz-sac-ekimi">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
-
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/fue-technique.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('fue_technique')}</ServiceTitle>
-              <ServiceDescription>
-                {t('fue_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/fue-teknigi-ile-sac-ekimi">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
-
-          <ServiceCard>
-            <ServiceImage style={{ backgroundImage: 'url("/images/aftercare.jpg")' }} />
-            <ServiceContent>
-              <ServiceTitle>{t('aftercare')}</ServiceTitle>
-              <ServiceDescription>
-                {t('aftercare_desc')}
-              </ServiceDescription>
-              <CTAButton to="/blog/sac-ekimi-sonrasi-bakim">{t('detailed_info')}</CTAButton>
-            </ServiceContent>
-          </ServiceCard>
-        </ServicesGrid>
-      </ServicesSection>
-
-      <TestimonialsSection>
-        <ScrollAnimation>
+      <ScrollAnimation className="delay-3">
+        <TestimonialsSection>
           <SectionTitle>{t('testimonials_title')}</SectionTitle>
-        </ScrollAnimation>
-        <TestimonialsGrid>
-          {testimonials.map((testimonial, index) => (
-            <ScrollAnimation key={testimonial.id} className={`delay-${index + 1}`}>
-              <TestimonialCard>
-                <TestimonialContent>{testimonial.content}</TestimonialContent>
-                <TestimonialAuthor>
-                  <AuthorName>{testimonial.author}</AuthorName>
-                  <AuthorLocation>{testimonial.location}</AuthorLocation>
-                </TestimonialAuthor>
-              </TestimonialCard>
-            </ScrollAnimation>
-          ))}
-        </TestimonialsGrid>
-      </TestimonialsSection>
+          <TestimonialsGrid>
+            {testimonials.map((testimonial, index) => (
+              <ScrollAnimation key={testimonial.id} className={`delay-${index + 1}`}>
+                <TestimonialCard>
+                  <TestimonialContent>{testimonial.content}</TestimonialContent>
+                  <TestimonialAuthor>
+                    <AuthorName>{testimonial.author}</AuthorName>
+                    <AuthorLocation>{testimonial.location}</AuthorLocation>
+                  </TestimonialAuthor>
+                </TestimonialCard>
+              </ScrollAnimation>
+            ))}
+          </TestimonialsGrid>
+        </TestimonialsSection>
+      </ScrollAnimation>
     </>
   )
 }
