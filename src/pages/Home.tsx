@@ -7,127 +7,198 @@ import 'slick-carousel/slick/slick-theme.css'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../context/LanguageContext'
 
+interface Testimonial {
+  id: number;
+  content: string;
+  author: string;
+  authorImage: string;
+  location: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    content: "Saç ekimi deneyimim mükemmeldi. Ekip çok profesyoneldi ve sonuçlardan çok memnunum.",
+    author: "Ahmet Yılmaz",
+    authorImage: "/images/testimonial1.jpg",
+    location: "İstanbul, Türkiye"
+  },
+  {
+    id: 2,
+    content: "The hair transplant experience was amazing. Very professional team and I'm very happy with the results.",
+    author: "John Smith",
+    authorImage: "/images/testimonial2.jpg",
+    location: "London, UK"
+  },
+  {
+    id: 3,
+    content: "Die Haartransplantation war eine tolle Erfahrung. Sehr professionelles Team und ich bin mit den Ergebnissen sehr zufrieden.",
+    author: "Hans Mueller",
+    authorImage: "/images/testimonial3.jpg",
+    location: "Berlin, Germany"
+  }
+];
+
 const HeroSection = styled.section`
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/hero-bg.jpg') center/cover;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  color: white;
-`
+  padding: 2rem;
+  margin-top: 60px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-top: 50px;
+  }
+`;
 
 const HeroContent = styled.div`
   max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-`
+  color: white;
+`;
 
 const HeroTitle = styled.h1`
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
+  font-weight: bold;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
-`
+`;
 
 const HeroDescription = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
-  opacity: 0.9;
-`
+  line-height: 1.6;
 
-const ClinicText = styled.span`
-  font-family: 'Dancing Script', cursive;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const CTAButton = styled(Link)`
+  display: inline-block;
+  background: #1a76d2;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #1565c0;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const ServicesSection = styled.section`
+  padding: 5rem 2rem;
+  background: #f5f5f5;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  text-align: center;
   font-size: 2.5rem;
-  color: #e0e0e0;
-  display: block;
-  margin-bottom: 1.5rem;
-  font-style: italic;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem;
+  color: #333;
 
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
-`
+`;
 
-const ServicesSection = styled.section`
-  padding: 5rem 0;
-  background: #f8f9fa;
-`
-
-const ServiceGrid = styled.div`
+const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-`
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+`;
 
 const ServiceCard = styled.div`
   background: white;
-  padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
   }
-`
+`;
 
-const ServiceIcon = styled.div`
-  font-size: 2.5rem;
-  color: #1a76d2;
-  margin-bottom: 1rem;
-`
+const ServiceImage = styled.div`
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: 768px) {
+    height: 180px;
+  }
+`;
+
+const ServiceContent = styled.div`
+  padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
 
 const ServiceTitle = styled.h3`
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #333;
-`
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+`;
 
 const ServiceDescription = styled.p`
   color: #666;
   margin-bottom: 1.5rem;
-`
+  line-height: 1.6;
 
-const CTAButton = styled(Link)`
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #1a76d2;
-  color: white;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #1557a0;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
   }
-`
+`;
 
 const TestimonialsSection = styled.section`
-  padding: 5rem 0;
-  background: #f8f9fa;
-  text-align: center;
-`
+  padding: 5rem 2rem;
+  background: white;
 
-const TestimonialsTitle = styled.h2`
-  font-size: 2.5rem;
-  color: #1a76d2;
-  margin-bottom: 1rem;
-  text-align: center;
-`
-
-const TestimonialsSubtitle = styled.p`
-  color: #666;
-  font-size: 1.1rem;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-`
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+  }
+`;
 
 const TestimonialsGrid = styled.div`
   display: grid;
@@ -135,106 +206,73 @@ const TestimonialsGrid = styled.div`
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-`
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+`;
 
 const TestimonialCard = styled.div`
-  background: white;
-  padding: 2rem;
+  background: #f8f9fa;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: all 0.3s ease;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
-`
+`;
 
 const TestimonialContent = styled.p`
-  color: #666;
-  line-height: 1.8;
   font-style: italic;
+  color: #555;
   margin-bottom: 1.5rem;
-  position: relative;
-  padding-left: 1.5rem;
+  line-height: 1.6;
 
-  &::before {
-    content: '"';
-    font-size: 3rem;
-    color: #1a76d2;
-    position: absolute;
-    left: -0.5rem;
-    top: -1rem;
-    opacity: 0.2;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
   }
-`
+`;
 
 const TestimonialAuthor = styled.div`
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.5rem;
-`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
 
 const AuthorImage = styled.img`
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-`
 
-const AuthorInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-`
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+`;
 
-const AuthorName = styled.span`
-  font-weight: 600;
+const AuthorInfo = styled.div``;
+
+const AuthorName = styled.h4`
   color: #333;
-`
+  margin-bottom: 0.25rem;
 
-const AuthorLocation = styled.span`
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const AuthorLocation = styled.p`
   color: #666;
   font-size: 0.9rem;
-`
 
-const SimpleTestimonialCard = styled(TestimonialCard)`
-  margin-bottom: 1rem;
-`
-
-const testimonials = [
-  {
-    id: 1,
-    content: 'LoyaltyHair ile saç ekimim harikaydı! Ekibin ilgisi ve işlerindeki ustalık sayesinde, beklediğimden çok daha iyi bir sonuç aldım. Saçlarım şimdi çok daha dolgun ve doğal görünüyor. Kesinlikle tavsiye ederim!',
-    author: 'Mehmet Yılmaz'
-  },
-  {
-    id: 2,
-    content: 'Saç ekimi konusunda LoyaltyHair\'den daha iyisini düşünemiyorum. Tüm süreç boyunca mükemmel hizmet aldım ve sonuçlar tam istediğim gibi oldu. Profesyonel ve dost canlısı ekibe sahipler. Çok memnun kaldım!',
-    author: 'Salih Demirel'
-  },
-  {
-    id: 3,
-    content: 'LoyaltyHair\'de yaptırdığım sakal ekimi, beklediğimden çok daha iyi sonuçlandı. Ekibin dikkatli çalışması ve hastalarına gösterdiği özen, gerçekten takdire şayan. Şimdi çok daha özgüvenli hissediyorum.',
-    author: 'Hasan Kara'
-  },
-  {
-    id: 4,
-    content: 'LoyaltyHair\'deki deneyimim harika oldu! Saç ekimi sürecinde gösterdikleri profesyonellik ve ilgi, beklentilerimi aştı. Ekibin bilgisi ve destekleyici yaklaşımı sayesinde, hem süreç boyunca hem de sonrasında kendimi çok rahat hissettim.',
-    author: 'Ahmet Dağ'
-  },
-  {
-    id: 5,
-    content: 'Tıraşsız saç ekimi yöntemiyle operasyon geçirdim. İşime ara vermeden, sosyal hayatım etkilenmeden süreç tamamlandı. Doğal ve sık görünen saçlarıma kavuştuğum için çok mutluyum. LoyaltyHair ekibine teşekkür ederim.',
-    author: 'Serkan Yıldız'
-  },
-  {
-    id: 6,
-    content: 'DHI tekniği ile yapılan saç ekimim çok başarılı geçti. Ağrısız ve konforlu bir süreçti. Operasyon sonrası bakım sürecinde de ekip sürekli yanımdaydı. Artık aynada kendime bakmaktan keyif alıyorum.',
-    author: 'Murat Özdemir'
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
   }
-]
+`;
 
 const simpleTestimonials = [
   {
@@ -284,73 +322,88 @@ const Home: React.FC = () => {
       </HeroSection>
 
       <ServicesSection>
-        <ServiceGrid>
+        <SectionTitle>{t('nav_services')}</SectionTitle>
+        <ServicesGrid>
           <ServiceCard>
-            <ServiceIcon>💇</ServiceIcon>
-            <ServiceTitle>{t('hair_transplant')}</ServiceTitle>
-            <ServiceDescription>
-              {t('hair_transplant_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/sac-ekimi-nasil-yapilir">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/hair-transplant.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('hair_transplant')}</ServiceTitle>
+              <ServiceDescription>
+                {t('hair_transplant_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/sac-ekimi-nasil-yapilir">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
 
           <ServiceCard>
-            <ServiceIcon>👨‍⚕️</ServiceIcon>
-            <ServiceTitle>{t('dhi_technique')}</ServiceTitle>
-            <ServiceDescription>
-              {t('dhi_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/dhi-teknigi-nedir">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/dhi-technique.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('dhi_technique')}</ServiceTitle>
+              <ServiceDescription>
+                {t('dhi_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/dhi-teknigi-nedir">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
 
           <ServiceCard>
-            <ServiceIcon>💉</ServiceIcon>
-            <ServiceTitle>{t('prp_treatment')}</ServiceTitle>
-            <ServiceDescription>
-              {t('prp_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/prp-tedavisi-ve-faydalari">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/prp-treatment.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('prp_treatment')}</ServiceTitle>
+              <ServiceDescription>
+                {t('prp_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/prp-tedavisi-ve-faydalari">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
 
           <ServiceCard>
-            <ServiceIcon>✂️</ServiceIcon>
-            <ServiceTitle>{t('no_shave')}</ServiceTitle>
-            <ServiceDescription>
-              {t('no_shave_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/tirassiz-sac-ekimi">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/no-shave.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('no_shave')}</ServiceTitle>
+              <ServiceDescription>
+                {t('no_shave_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/tirassiz-sac-ekimi">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
 
           <ServiceCard>
-            <ServiceIcon>🔬</ServiceIcon>
-            <ServiceTitle>{t('fue_technique')}</ServiceTitle>
-            <ServiceDescription>
-              {t('fue_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/fue-teknigi-ile-sac-ekimi">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/fue-technique.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('fue_technique')}</ServiceTitle>
+              <ServiceDescription>
+                {t('fue_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/fue-teknigi-ile-sac-ekimi">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
 
           <ServiceCard>
-            <ServiceIcon>🏥</ServiceIcon>
-            <ServiceTitle>{t('aftercare')}</ServiceTitle>
-            <ServiceDescription>
-              {t('aftercare_desc')}
-            </ServiceDescription>
-            <CTAButton to="/blog/sac-ekimi-sonrasi-bakim">{t('detailed_info')}</CTAButton>
+            <ServiceImage style={{ backgroundImage: 'url("/images/aftercare.jpg")' }} />
+            <ServiceContent>
+              <ServiceTitle>{t('aftercare')}</ServiceTitle>
+              <ServiceDescription>
+                {t('aftercare_desc')}
+              </ServiceDescription>
+              <CTAButton to="/blog/sac-ekimi-sonrasi-bakim">{t('detailed_info')}</CTAButton>
+            </ServiceContent>
           </ServiceCard>
-        </ServiceGrid>
+        </ServicesGrid>
       </ServicesSection>
 
       <TestimonialsSection>
-        <TestimonialsTitle>{t('testimonials_title')}</TestimonialsTitle>
-        <TestimonialsSubtitle>
-          {t('testimonials_subtitle')}
-        </TestimonialsSubtitle>
         <TestimonialsGrid>
           {testimonials.map(testimonial => (
             <TestimonialCard key={testimonial.id}>
               <TestimonialContent>{testimonial.content}</TestimonialContent>
-              <TestimonialAuthor>{testimonial.author}</TestimonialAuthor>
+              <TestimonialAuthor>
+                <AuthorImage src={testimonial.authorImage} alt={testimonial.author} />
+                <AuthorInfo>
+                  <AuthorName>{testimonial.author}</AuthorName>
+                  <AuthorLocation>{testimonial.location}</AuthorLocation>
+                </AuthorInfo>
+              </TestimonialAuthor>
             </TestimonialCard>
           ))}
         </TestimonialsGrid>
