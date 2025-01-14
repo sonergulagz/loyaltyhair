@@ -33,10 +33,11 @@ const FooterSection = styled.div`
 `
 
 const FooterTitle = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: white;
+  font-family: 'Saira Stencil One', cursive;
 `
 
 const FooterLink = styled(Link)`
@@ -97,15 +98,11 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <FooterTitle>LoyaltyHairClinic</FooterTitle>
+          <FooterTitle>LoyaltyHair</FooterTitle>
           <FooterText>
-            Saç ekimi konusunda uzman kadromuzla yanınızdayız.
+          LoyaltyHair, modern teknolojileri ve kişiye özel yaklaşımlarıyla sektörde fark yaratan bir sağlık kuruluşudur. Doğal ve estetik sonuçlara ulaşmayı hedefleyen köklü deneyimi ve yenilikçi tedavi yöntemleriyle bireylerin sadece dış görünümünü değil, özgüvenlerini de yeniden inşa etmeyi misyon edinmiştir. 
           </FooterText>
-          <SocialLinks>
-            <SocialLink href="https://facebook.com" target="_blank" rel="noopener noreferrer">📱</SocialLink>
-            <SocialLink href="https://instagram.com" target="_blank" rel="noopener noreferrer">📸</SocialLink>
-            <SocialLink href="https://twitter.com" target="_blank" rel="noopener noreferrer">🐦</SocialLink>
-          </SocialLinks>
+          
           <ContactButton to="/iletisim">
             Bize Ulaşın
           </ContactButton>
