@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { useLanguage } from '../context/LanguageContext'
 import ScrollAnimation from '../components/ScrollAnimation'
+import FAQ from '../components/FAQ'
 
 interface Testimonial {
   id: number;
@@ -468,6 +469,10 @@ const Home: React.FC = () => {
             ))}
           </TestimonialsGrid>
         </TestimonialsSection>
+      </ScrollAnimation>
+
+      <ScrollAnimation className="delay-4">
+        <FAQ />
       </ScrollAnimation>
     </>
   )

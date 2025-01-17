@@ -1,40 +1,51 @@
 import styled from 'styled-components';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppContainer = styled.a`
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #25D366;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
   color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  border-radius: 50px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   z-index: 1000;
 
   &:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background-color: #1da856;
   }
 
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
+    padding: 10px 20px;
   }
 `;
 
-const WhatsAppIcon = styled.span`
-  font-size: 2.2rem;
+const WhatsAppIcon = styled.div`
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 20px;
+  }
+`;
+
+const ButtonText = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
   }
 `;
 
@@ -46,7 +57,10 @@ const WhatsAppButton = () => {
       rel="noopener noreferrer"
       aria-label="WhatsApp ile iletişime geçin"
     >
-      <WhatsAppIcon>💬</WhatsAppIcon>
+      <WhatsAppIcon>
+        <FaWhatsapp />
+      </WhatsAppIcon>
+      <ButtonText>Bize Ulaşın</ButtonText>
     </WhatsAppContainer>
   );
 };

@@ -99,13 +99,7 @@ const Footer: React.FC = () => {
       <FooterContent>
         <FooterSection>
           <FooterTitle>LoyaltyHair</FooterTitle>
-          <FooterText>
-          LoyaltyHair, modern teknolojileri ve kişiye özel yaklaşımlarıyla sektörde fark yaratan bir sağlık kuruluşudur. Doğal ve estetik sonuçlara ulaşmayı hedefleyen köklü deneyimi ve yenilikçi tedavi yöntemleriyle bireylerin sadece dış görünümünü değil, özgüvenlerini de yeniden inşa etmeyi misyon edinmiştir. 
-          </FooterText>
-          
-          <ContactButton to="/iletisim">
-            Bize Ulaşın
-          </ContactButton>
+          <FooterText>© 2024 LoyaltyHair. {t('footer_rights')}</FooterText>
         </FooterSection>
 
         <FooterSection>
@@ -117,6 +111,7 @@ const Footer: React.FC = () => {
           <FooterLink to="/hizmetler">Sakal Ekimi</FooterLink>
           <FooterLink to="/hizmetler">Kaş Ekimi</FooterLink>
           <FooterLink to="/hizmetler">PRP Tedavisi</FooterLink>
+          <FooterLink to="/hizmetler">Kök Hücre Tedavisi</FooterLink>
           
         </FooterSection>
 

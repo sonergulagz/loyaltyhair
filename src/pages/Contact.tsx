@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useLanguage } from '../context/LanguageContext'
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from 'react-icons/fa'
 
 const ContactContainer = styled.div`
   padding: 6rem 2rem;
@@ -50,17 +51,41 @@ const InfoItem = styled.div`
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f8f9fa;
+  }
 `;
 
-const InfoIcon = styled.span`
-  font-size: 1.5rem;
+const InfoIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background: #1a76d2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+
+  ${InfoItem}:hover & {
+    transform: scale(1.1);
+  }
 `;
 
-const InfoContent = styled.div``;
+const InfoContent = styled.div`
+  flex: 1;
+`;
 
 const InfoTitle = styled.h4`
-  color: #333;
+  color: #1a76d2;
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 `;
 
 const InfoText = styled.p`
@@ -89,6 +114,7 @@ const Label = styled.label`
   display: block;
   color: #333;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 `;
 
 const Input = styled.input`
@@ -97,10 +123,12 @@ const Input = styled.input`
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #1a76d2;
+    box-shadow: 0 0 0 2px rgba(26, 118, 210, 0.1);
   }
 `;
 
@@ -112,10 +140,12 @@ const Textarea = styled.textarea`
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #1a76d2;
+    box-shadow: 0 0 0 2px rgba(26, 118, 210, 0.1);
   }
 `;
 
@@ -197,7 +227,9 @@ const Contact: React.FC = () => {
           </ContactDescription>
           
           <InfoItem>
-            <InfoIcon>📍</InfoIcon>
+            <InfoIcon>
+              <FaMapMarkerAlt />
+            </InfoIcon>
             <InfoContent>
               <InfoTitle>{t('address')}</InfoTitle>
               <InfoText>Büyükdere cad. Torun Center, Mecidiyeköy/İstanbul</InfoText>
@@ -205,7 +237,9 @@ const Contact: React.FC = () => {
           </InfoItem>
 
           <InfoItem>
-            <InfoIcon>📞</InfoIcon>
+            <InfoIcon>
+              <FaPhoneAlt />
+            </InfoIcon>
             <InfoContent>
               <InfoTitle>{t('phone')}</InfoTitle>
               <InfoText>
@@ -217,7 +251,9 @@ const Contact: React.FC = () => {
           </InfoItem>
 
           <InfoItem>
-            <InfoIcon>📧</InfoIcon>
+            <InfoIcon>
+              <FaEnvelope />
+            </InfoIcon>
             <InfoContent>
               <InfoTitle>{t('email')}</InfoTitle>
               <InfoText>info@loyaltyhair.com</InfoText>
@@ -225,7 +261,9 @@ const Contact: React.FC = () => {
           </InfoItem>
 
           <InfoItem>
-            <InfoIcon>⏰</InfoIcon>
+            <InfoIcon>
+              <FaClock />
+            </InfoIcon>
             <InfoContent>
               <InfoTitle>{t('working_hours')}</InfoTitle>
               <InfoText>{t('working_hours_detail')}</InfoText>

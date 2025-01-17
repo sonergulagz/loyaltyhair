@@ -1,232 +1,152 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 const ServicesContainer = styled.div`
-  padding: 6rem 0;
+  padding: 6rem 2rem;
+  margin-top: 60px;
+  background: #f8f9fa;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+    margin-top: 50px;
+  }
 `
 
-const ServicesHero = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('/images/services-hero.jpg') center/cover;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  margin-bottom: 4rem;
-`
-
-const ServicesTitle = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 1rem;
-`
-
-const ServicesContent = styled.div`
+const ServicesGrid = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
 `
 
 const ServiceCard = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 4rem;
-  padding: 2rem;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-
-  &:nth-child(even) {
-    direction: rtl;
-    
-    .content {
-      direction: ltr;
-    }
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 `
 
-const ServiceImage = styled.div`
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
+const ServiceImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 `
 
 const ServiceContent = styled.div`
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 1.5rem;
 `
 
-const ServiceTitle = styled.h2`
+const ServiceTitle = styled.h3`
   color: #1a76d2;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 
 const ServiceDescription = styled.p`
-  margin-bottom: 2rem;
   color: #666;
-  line-height: 1.8;
-`
-
-const ServiceFeatures = styled.ul`
-  list-style: none;
-  margin-bottom: 2rem;
-
-  li {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    &::before {
-      content: "✓";
-      color: #1a76d2;
-      font-weight: bold;
-    }
-  }
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 `
 
 const CTAButton = styled(Link)`
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem;
   background: #1a76d2;
   color: white;
-  border-radius: 30px;
-  font-weight: 500;
+  border-radius: 25px;
+  text-decoration: none;
   transition: all 0.3s ease;
 
   &:hover {
     background: #1557a0;
+    transform: translateY(-2px);
   }
 `
 
+const PageTitle = styled.h1`
+  text-align: center;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+`
+
+const PageDescription = styled.p`
+  text-align: center;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+`
+
 const Services: React.FC = () => {
+  const { t } = useLanguage()
+
+  const services = [
+    {
+      title: t('dhi_technique'),
+      description: t('dhi_desc'),
+      image: '/images/dhi-hair.jpg',
+      link: '/iletisim'
+    },
+    {
+      title: t('fue_technique'),
+      description: t('fue_desc'),
+      image: '/images/fue-hair.jpg',
+      link: '/iletisim'
+    },
+    {
+      title: t('no_shave'),
+      description: t('no_shave_desc'),
+      image: '/images/no-shave.jpg',
+      link: '/iletisim'
+    },
+    {
+      title: t('beard_transplant'),
+      description: t('beard_transplant_desc'),
+      image: '/images/beard_transplant.png',
+      link: '/iletisim'
+    },
+    {
+      title: t('eyebrow_transplant'),
+      description: t('eyebrow_transplant_desc'),
+      image: '/images/eyebrow_transplant.jpg',
+      link: '/iletisim'
+    },
+    {
+      title: t('prp_treatment'),
+      description: t('prp_desc'),
+      image: '/images/prp-treatment.jpg',
+      link: '/iletisim'
+    }
+  ]
+
   return (
     <ServicesContainer>
-      <ServicesHero>
-        <div>
-          <ServicesTitle>Hizmetlerimiz</ServicesTitle>
-          <p>Size özel saç ekimi çözümleri</p>
-        </div>
-      </ServicesHero>
-
-      <ServicesContent>
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/fue-hair.jpg")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>FUE Saç Ekimi</ServiceTitle>
-            <ServiceDescription>
-              FUE (Follicular Unit Extraction) tekniği ile doğal ve kalıcı sonuçlar elde edin.
-              Minimal invaziv bu yöntem ile hızlı iyileşme süreci ve maksimum başarı sağlıyoruz.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <li>Lokal anestezi ile ağrısız işlem</li>
-              <li>Doğal görünümlü sonuçlar</li>
-              <li>Hızlı iyileşme süreci</li>
-              <li>Kalıcı çözüm</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
-
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/dhi-hair.jpg")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>DHI Saç Ekimi</ServiceTitle>
-            <ServiceDescription>
-              DHI (Direct Hair Implantation) tekniği ile kanal açma işlemi olmadan, özel Choi kalemleri
-              ile direkt ekim yaparak daha hızlı ve konforlu bir deneyim sunuyoruz.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <li>Kanal açma işlemi yok</li>
-              <li>Daha hızlı iyileşme</li>
-              <li>Minimum travma</li>
-              <li>Maksimum yoğunluk</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
-
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/no-shave.jpg")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>Tıraşsız Saç Ekimi</ServiceTitle>
-            <ServiceDescription>
-              DHI (Direct Hair Implantation) tekniği ile kanal açma işlemi olmadan, özel Choi kalemleri
-              ile direkt ekim yaparak daha hızlı ve konforlu bir deneyim sunuyoruz.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <li>Kanal açma işlemi yok</li>
-              <li>Daha hızlı iyileşme</li>
-              <li>Minimum travma</li>
-              <li>Maksimum yoğunluk</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
-
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/beard_transplant.png")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>Sakal Ekimi</ServiceTitle>
-            <ServiceDescription>
-            Sakal ekimi süreci, hastanın ihtiyaçlarının ve beklentilerinin detaylı bir şekilde değerlendirilmesiyle başlar. Ekim yapılacak alanın yoğunluğu, sakalın şekli ve yönü gibi faktörler doktor tarafından incelenir. Ayrıca, donör alan (genellikle başın arkası) değerlendirilir.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <li>Kanal açma işlemi yok</li>
-              <li>Daha hızlı iyileşme</li>
-              <li>Minimum travma</li>
-              <li>Maksimum yoğunluk</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
-
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/eyebrow_transplant.jpg")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>Kaş Ekimi</ServiceTitle>
-            <ServiceDescription>
-            Kaş ekimi, seyrek veya kaybolmuş kaşları doldurmak için yapılan bir cerrahi işlemdir. Bu işlemde, saç ekimi tekniği kullanılarak, donör bölgeden alınan saç kökleri, kaş bölgesine nakledilir ve daha dolgun ve estetik bir görünüm elde edilmesi sağlanır.            </ServiceDescription>
-            <ServiceFeatures>
-              <li>Kalıcı sonuçlar</li>
-              <li>Daha hızlı iyileşme</li>
-              <li>Minimum travma</li>
-              <li>Maksimum yoğunluk</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
-        <ServiceCard>
-          <ServiceImage style={{ backgroundImage: 'url("/images/prp-treatment.jpg")' }} />
-          <ServiceContent className="content">
-            <ServiceTitle>PRP Tedavisi</ServiceTitle>
-            <ServiceDescription>
-              Kendi kanınızdan elde edilen trombositten zengin plazma ile saç köklerinizi
-              güçlendiriyor ve yeni saç çıkışını stimüle ediyoruz.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <li>%100 doğal yöntem</li>
-              <li>Saç dökülmesini durdurma</li>
-              <li>Yeni saç çıkışını uyarma</li>
-              <li>Mevcut saçları güçlendirme</li>
-            </ServiceFeatures>
-            <CTAButton to="/iletisim">Randevu Al</CTAButton>
-          </ServiceContent>
-        </ServiceCard>
+      <PageTitle>{t('services_title')}</PageTitle>
+      <PageDescription>{t('services_description')}</PageDescription>
       
-        
-      </ServicesContent>
+      <ServicesGrid>
+        {services.map((service, index) => (
+          <ServiceCard key={index}>
+            <ServiceImage src={service.image} alt={service.title} />
+            <ServiceContent>
+              <ServiceTitle>{service.title}</ServiceTitle>
+              <ServiceDescription>{service.description}</ServiceDescription>
+              <CTAButton to={service.link}>{t('detailed_info')}</CTAButton>
+            </ServiceContent>
+          </ServiceCard>
+        ))}
+      </ServicesGrid>
     </ServicesContainer>
   )
 }

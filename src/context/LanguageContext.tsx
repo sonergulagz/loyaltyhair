@@ -48,7 +48,32 @@ export type TranslationKey =
   | 'email_address'
   | 'phone_number'
   | 'message'
-  | 'send_message';
+  | 'send_message'
+  | 'about_title'
+  | 'about_description'
+  | 'expert_team'
+  | 'expert_team_desc'
+  | 'modern_facilities'
+  | 'modern_facilities_desc'
+  | 'quality_service'
+  | 'quality_service_desc'
+  | 'personalized_care'
+  | 'personalized_care_desc'
+  | 'patient_satisfaction'
+  | 'patient_satisfaction_desc'
+  | 'lifetime_support'
+  | 'lifetime_support_desc'
+  | 'services_title'
+  | 'services_description'
+  | 'blog_title'
+  | 'blog_description'
+  | 'footer_rights'
+  | 'footer_services'
+  | 'footer_blog'
+  | 'footer_contact'
+  | 'footer_address'
+  | 'footer_phone'
+  | 'footer_email';
 
 type LanguageContextType = {
   currentLanguage: Language;
@@ -101,7 +126,32 @@ const translations = {
     phone_number: 'Telefon Numaranız',
     message: 'Mesajınız',
     send_message: 'MESAJ GÖNDER',
-    read_more: 'Devamını Oku'
+    read_more: 'Devamını Oku',
+    about_title: 'Hakkımızda',
+    about_description: 'LoyaltyHair olarak, saç ekimi alanında uzun yıllara dayanan deneyimimizle, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz. Modern teknolojiler ve uluslararası standartlarda hizmet kalitesi sunuyoruz.',
+    expert_team: 'Uzman Ekip',
+    expert_team_desc: 'Alanında uzman doktorlarımız ve deneyimli ekibimizle profesyonel hizmet sunuyoruz.',
+    modern_facilities: 'Modern Klinik',
+    modern_facilities_desc: 'Son teknoloji cihazlarla donatılmış kliniğimizde en iyi hizmeti veriyoruz.',
+    quality_service: 'Kaliteli Hizmet',
+    quality_service_desc: 'Uluslararası standartlarda kaliteli hizmet ve hasta memnuniyeti odaklı yaklaşım.',
+    personalized_care: 'Kişiye Özel Bakım',
+    personalized_care_desc: 'Her hastamıza özel tedavi planı ve kişiselleştirilmiş bakım hizmeti sunuyoruz.',
+    patient_satisfaction: 'Hasta Memnuniyeti',
+    patient_satisfaction_desc: '%98\'in üzerinde hasta memnuniyeti ile güvenilir hizmet sağlıyoruz.',
+    lifetime_support: 'Ömür Boyu Destek',
+    lifetime_support_desc: 'Operasyon sonrası süreçte de yanınızda olmaya devam ediyoruz.',
+    services_title: 'Hizmetlerimiz',
+    services_description: 'LoyaltyHair olarak, saç ekimi alanında uzun yıllara dayanan deneyimimizle, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz. Modern teknolojiler ve uluslararası standartlarda hizmet kalitesi sunuyoruz.',
+    blog_title: 'Blog',
+    blog_description: 'LoyaltyHair olarak, saç ekimi alanında uzun yıllara dayanan deneyimimizle, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz. Modern teknolojiler ve uluslararası standartlarda hizmet kalitesi sunuyoruz.',
+    footer_rights: 'Alle Rechte vorbehalten.',
+    footer_services: 'Dienstleistungen',
+    footer_blog: 'Blog',
+    footer_contact: 'Kontakt',
+    footer_address: 'Adresse',
+    footer_phone: 'Telefon',
+    footer_email: 'E-Mail'
   },
   en: {
     hero_title: 'Your Trusted Partner in Hair Transplantation',
@@ -146,7 +196,32 @@ const translations = {
     phone_number: 'Your Phone',
     message: 'Your Message',
     send_message: 'SEND MESSAGE',
-    read_more: 'Read More'
+    read_more: 'Read More',
+    about_title: 'About Us',
+    about_description: 'At LoyaltyHair, we aim to provide the best service to our customers with our years of experience in hair transplantation. We offer modern technologies and international service quality standards.',
+    expert_team: 'Expert Team',
+    expert_team_desc: 'We provide professional service with our expert doctors and experienced team.',
+    modern_facilities: 'Modern Clinic',
+    modern_facilities_desc: 'We provide the best service in our clinic equipped with the latest technology.',
+    quality_service: 'Quality Service',
+    quality_service_desc: 'International quality standards and patient satisfaction focused approach.',
+    personalized_care: 'Personalized Care',
+    personalized_care_desc: 'We offer personalized treatment plans and customized care services for each patient.',
+    patient_satisfaction: 'Patient Satisfaction',
+    patient_satisfaction_desc: 'We provide reliable service with over 98% patient satisfaction.',
+    lifetime_support: 'Lifetime Support',
+    lifetime_support_desc: 'We continue to be with you in the post-operation process.',
+    services_title: 'Services',
+    services_description: 'At LoyaltyHair, we aim to provide the best service to our customers with our years of experience in hair transplantation. We offer modern technologies and international service quality standards.',
+    blog_title: 'Blog',
+    blog_description: 'At LoyaltyHair, we aim to provide the best service to our customers with our years of experience in hair transplantation. We offer modern technologies and international service quality standards.',
+    footer_rights: 'All rights reserved.',
+    footer_services: 'Services',
+    footer_blog: 'Blog',
+    footer_contact: 'Contact',
+    footer_address: 'Address',
+    footer_phone: 'Phone',
+    footer_email: 'Email'
   },
   de: {
     hero_title: 'Ihr vertrauenswürdiger Partner bei der Haartransplantation',
@@ -160,12 +235,12 @@ const translations = {
     prp_desc: 'Wir stärken Ihre Haarfollikel mit Plasma aus Ihrem eigenen Blut.',
     no_shave: 'No-Shave Haartransplantation',
     no_shave_desc: 'Sie können sich einer Haartransplantation unterziehen, ohne Ihr soziales Leben zu unterbrechen.',
-    beard_transplant: 'Sakal Ekimi',
-    beard_transplant_desc: 'Doğal ve sık görünümlü sakal için uzman ekibimizle kişiye özel sakal ekimi operasyonları.',
-    eyebrow_transplant: 'Kaş Ekimi',
-    eyebrow_transplant_desc: 'Kaş şeklinizi ve yoğunluğunu iyileştirmek için hassas ve doğal görünümlü kaş ekimi.',
-    stem_cell: 'Kök Hücre Tedavisi',
-    stem_cell_desc: 'Saç köklerini canlandırmak ve güçlendirmek için yenilikçi kök hücre tedavisi.',
+    beard_transplant: 'Barttransplantation',
+    beard_transplant_desc: 'Personalisierte Barttransplantationen mit unserem Expertenteam für ein natürliches und dichtes Aussehen.',
+    eyebrow_transplant: 'Augenbrauentransplantation',
+    eyebrow_transplant_desc: 'Präzise und natürlich aussehende Augenbrauentransplantation zur Verbesserung Ihrer Augenbrauenform und -dichte.',
+    stem_cell: 'Stammzellenbehandlung',
+    stem_cell_desc: 'Innovative Stammzellenbehandlung zur Revitalisierung und Stärkung der Haarfollikel.',
     fue_technique: 'FUE-Technik',
     fue_desc: 'Erzielen Sie natürliche und dauerhafte Ergebnisse mit minimal-invasiver Methode.',
     aftercare: 'Nachsorge',
@@ -191,7 +266,32 @@ const translations = {
     phone_number: 'Telefonnummer',
     message: 'Ihre Nachricht',
     send_message: 'Nachricht senden',
-    read_more: 'Weiterlesen'
+    read_more: 'Weiterlesen',
+    about_title: 'Über uns',
+    about_description: 'Bei LoyaltyHair streben wir danach, unseren Kunden mit unserer langjährigen Erfahrung in der Haartransplantation den besten Service zu bieten. Wir bieten moderne Technologien und internationale Servicequalitätsstandards.',
+    expert_team: 'Expertenteam',
+    expert_team_desc: 'Wir bieten professionellen Service mit unseren erfahrenen Ärzten und unserem erfahrenen Team.',
+    modern_facilities: 'Moderne Klinik',
+    modern_facilities_desc: 'Wir bieten den besten Service in unserer mit modernster Technologie ausgestatteten Klinik.',
+    quality_service: 'Qualitätsservice',
+    quality_service_desc: 'Internationale Qualitätsstandards und patientenorientierter Ansatz.',
+    personalized_care: 'Personalisierte Pflege',
+    personalized_care_desc: 'Wir bieten personalisierte Behandlungspläne und maßgeschneiderte Pflegedienste für jeden Patienten.',
+    patient_satisfaction: 'Patientenzufriedenheit',
+    patient_satisfaction_desc: 'Wir bieten zuverlässigen Service mit über 98% Patientenzufriedenheit.',
+    lifetime_support: 'Lebenslange Unterstützung',
+    lifetime_support_desc: 'Wir bleiben auch nach der Operation an Ihrer Seite.',
+    services_title: 'Unsere Dienstleistungen',
+    services_description: 'Wir bieten eine breite Palette von Haartransplantationsdiensten mit modernster Technologie.',
+    blog_title: 'Unser Blog',
+    blog_description: 'Aktuelle Informationen und Artikel über Haartransplantation.',
+    footer_rights: 'Alle Rechte vorbehalten.',
+    footer_services: 'Dienstleistungen',
+    footer_blog: 'Blog',
+    footer_contact: 'Kontakt',
+    footer_address: 'Adresse',
+    footer_phone: 'Telefon',
+    footer_email: 'E-Mail'
   },
   ar: {
     hero_title: 'شريكك الموثوق في زراعة الشعر',
@@ -205,12 +305,12 @@ const translations = {
     prp_desc: 'نقوي بصيلات الشعر لديك بالبلازما المستخرجة من دمك.',
     no_shave: 'زراعة الشعر بدون حلاقة',
     no_shave_desc: 'يمكنك إجراء زراعة الشعر دون مقاطعة حياتك الاجتماعية.',
-    beard_transplant: 'سكير الشعر',
-    beard_transplant_desc: 'تقنية سكير الشعر المخصصة للسكير الطبيعي والكثيف مع فريق الخبراء المخصص لكل شخص.',
-    eyebrow_transplant: 'تقنية الشعر المؤثر',
-    eyebrow_transplant_desc: 'تقنية إزالة الشعر المؤثرة لتحسين شكل وكثافة الشعر المؤثر.',
-    stem_cell: 'علاج الخلايا الأساسية',
-    stem_cell_desc: 'علاج الخلايا الأساسية المبتكر لتحفيز وتثبيط الشعر المؤثر.',
+    beard_transplant: 'زراعة اللحية',
+    beard_transplant_desc: 'عمليات زراعة لحية مخصصة مع فريقنا من الخبراء لمظهر طبيعي وكثيف.',
+    eyebrow_transplant: 'زراعة الحواجب',
+    eyebrow_transplant_desc: 'زراعة حواجب دقيقة وطبيعية المظهر لتحسين شكل وكثافة حواجبك.',
+    stem_cell: 'علاج الخلايا الجذعية',
+    stem_cell_desc: 'علاج مبتكر بالخلايا الجذعية لتنشيط وتقوية بصيلات الشعر.',
     fue_technique: 'تقنية FUE',
     fue_desc: 'احصل على نتائج طبيعية ودائمة مع طريقة الحد الأدنى من التدخل الجراحي.',
     aftercare: 'العناية بعد العملية',
@@ -236,7 +336,32 @@ const translations = {
     phone_number: 'رقم الهاتف',
     message: 'رسالتك',
     send_message: 'إرسال الرسالة',
-    read_more: 'اقرأ أكثر'
+    read_more: 'اقرأ أكثر',
+    about_title: 'معلومات عنا',
+    about_description: 'في لويالتي هير، نهدف إلى تقديم أفضل خدمة لعملائنا مع خبرتنا الطويلة في زراعة الشعر. نقدم تقنيات حديثة ومعايير جودة خدمة دولية.',
+    expert_team: 'فريق من الخبراء',
+    expert_team_desc: 'نقدم خدمة احترافية مع أطبائنا الخبراء وفريقنا ذوي الخبرة.',
+    modern_facilities: 'عيادة حديثة',
+    modern_facilities_desc: 'نقدم أفضل خدمة في عيادتنا المجهزة بأحدث التقنيات.',
+    quality_service: 'خدمة عالية الجودة',
+    quality_service_desc: 'معايير جودة دولية ونهج يركز على رضا المرضى.',
+    personalized_care: 'رعاية شخصية',
+    personalized_care_desc: 'نقدم خطط علاج مخصصة وخدمات رعاية مخصصة لكل مريض.',
+    patient_satisfaction: 'رضا المرضى',
+    patient_satisfaction_desc: 'نقدم خدمة موثوقة مع أكثر من 98٪ من رضا المرضى.',
+    lifetime_support: 'دعم مدى الحياة',
+    lifetime_support_desc: 'نستمر في أن نكون بجانبك في عملية ما بعد العملية.',
+    services_title: 'خدماتنا',
+    services_description: 'نقدم مجموعة واسعة من خدمات زراعة الشعر بأحدث التقنيات.',
+    blog_title: 'مدونتنا',
+    blog_description: 'معلومات ومقالات حديثة عن زراعة الشعر.',
+    footer_rights: 'جميع الحقوق محفوظة.',
+    footer_services: 'الخدمات',
+    footer_blog: 'المدونة',
+    footer_contact: 'اتصل بنا',
+    footer_address: 'العنوان',
+    footer_phone: 'الهاتف',
+    footer_email: 'البريد الإلكتروني'
   }
 };
 
